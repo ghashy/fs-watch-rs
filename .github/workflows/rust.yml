@@ -66,14 +66,11 @@ jobs:
           mkdir libs
           mv "${LIB_OUTPUT}" "./libs/${BIN_RELEASE}"
           
-      - name: Create Tag
-        run: git tag v0.1.0
-        
-      - name: Publish release
-        uses: softprops/action-gh-release@v1
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          files: |
-            ./libs/${LIB_RELEASE}
-            ./libs/${LIB_RELEASE_VERSIONED}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: libs/*
+          file_glob: true
+          tag: ${{ github.ref_name }}
+          overwrite: true
