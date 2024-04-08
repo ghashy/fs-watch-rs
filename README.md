@@ -40,3 +40,20 @@ func handle_signal(event: Dictionary):
 func stop():
     watcher.stop()
 ```
+
+`event` is Dictionary which looks like this:
+
+```gdscript
+{
+    "attrs": {}
+    "paths": ["/Users /home/bin/directory/file.ext"],
+    "type": {
+        "modify": {
+            "kind": "metadata",
+            "mode": "any"
+        }
+    }
+}
+```
+
+FsWatcher just serializes `notify::Event` to json and then to godot Dictionary type. So for more documentation about Event type, go to the [notify docs](https://docs.rs/notify/latest/notify/event/struct.Event.html)
