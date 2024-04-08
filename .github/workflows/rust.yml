@@ -74,6 +74,6 @@ jobs:
         with:
           files: |
             ./libs/*
-          tag_name: ${{ github.ref }}
+          tag_name: 0.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
