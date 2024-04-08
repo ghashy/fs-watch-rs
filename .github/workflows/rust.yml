@@ -43,7 +43,7 @@ jobs:
       - name: Build Library
         run: cargo build --verbose --locked --release --target ${{ matrix.target }}
  
-      - name: Release Binary
+      - name: Release Library
         shell: bash
         run: |
           if [[ "${{ matrix.runner }}" == "windows-latest" ]]; then
