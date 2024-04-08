@@ -1,7 +1,7 @@
 # fs-watch-rs
 
 This GDExtension is designed for monitoring file system events. It is written using [Rust bindings for Godot 4](https://github.com/godot-rust/gdext) and the [notify](https://github.com/notify-rs/notify) Rust crate.
-At a low level, [notify](https://github.com/notify-rs/notify) utilizes FSEvents or kqueue on macOS/iOS, inotify on Linux/Android, and ReadDirectoryChangesW on Windows.
+At a low level, [notify](https://github.com/notify-rs/notify) utilizes `FSEvents` or `kqueue` on macOS/iOS, `inotify` on Linux/Android, and `ReadDirectoryChangesW` on Windows.
 
 ## Using
 
