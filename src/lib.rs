@@ -7,8 +7,17 @@ use godot::obj::WithBaseField;
 use godot::prelude::Dictionary;
 use godot::prelude::*;
 
-use notify::{Event, FsEventWatcher, Watcher};
+use notify::{Event, Watcher};
 use notify::{RecursiveMode, Result};
+
+#[cfg(target_os = "macos")]
+use notify::FsEventWatcher;
+
+#[cfg(any(target_os = "linux", target_os = "android"))]
+use notify::INotifyWatcher;
+
+#[cfg(target_os = "windows")]
+use notify::ReadDirectoryChangesWatcher;
 
 struct MyExtension;
 
@@ -18,7 +27,12 @@ unsafe impl ExtensionLibrary for MyExtension {}
 #[derive(GodotClass)]
 #[class(no_init, base = Object)]
 struct FsWatcher {
+    #[cfg(target_os = "macos")]
     watcher: Option<FsEventWatcher>,
+    #[cfg(any(target_os = "linux", target_os = "android"))]
+    watcher: Option<INotifyWatcher>,
+    #[cfg(target_os = "windows")]
+    watcher: Option<ReadDirectoryChangesWatcher>,
     rx: Receiver<Event>,
     base: Base<Object>,
 }
