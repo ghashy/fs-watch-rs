@@ -29,7 +29,9 @@ jobs:
           - name: macos-arm64
             runner: macos-latest
             target: aarch64-apple-darwin
- 
+
+    permissions:
+      contents: write
     # The steps to run for each matrix item
     steps:
       - name: Checkout
