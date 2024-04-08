@@ -63,7 +63,7 @@ jobs:
           LIB_RELEASE="${PROJECT_NAME}-${{ matrix.name }}${BIN_SUFFIX}"
           LIB_RELEASE_VERSIONED="${PROJECT_NAME}-${{ github.ref_name }}-${{ matrix.name }}${BIN_SUFFIX}"
  
-          # Move the built binary where you want it
+          mkdir libs
           mv "${LIB_OUTPUT}" "./libs/${BIN_RELEASE}"
       - name: Publish release
         uses: softprops/action-gh-release@v1
