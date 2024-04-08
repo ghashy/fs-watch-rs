@@ -3,6 +3,28 @@
 This GDExtension is designed for monitoring file system events. It is written using [Rust bindings for Godot 4](https://github.com/godot-rust/gdext) and the [notify](https://github.com/notify-rs/notify) Rust crate.
 At a low level, [notify](https://github.com/notify-rs/notify) utilizes `FSEvents` or `kqueue` on macOS/iOS, `inotify` on Linux/Android, and `ReadDirectoryChangesW` on Windows.
 
+## Building
+You should have rust compiler/cargo installed. Clone repo, open terminal in root dir and run `cargo build --release`.
+
+## Installation
+Build or download binaries from `releases` section, create `fs-watch-rs.gdextension` file in the root of your godot project:
+```godot-resource
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.1
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 =     "res://path-to-bin.so"
+linux.release.x86_64 =   "res://path-to-bin.so"
+windows.debug.x86_64 =   "res://path-to-bin.dll"
+windows.release.x86_64 = "res://path-to-bin.dll"
+macos.debug =            "res://path-to-bin.dylib"
+macos.release =          "res://path-to-bin.dylib"
+macos.debug.arm64 =      "res://path-to-bin.dylib"
+macos.release.arm64 =    "res://path-to-bin.dylib"
+```
+
 ## Using
 
 To use this extension, you need to call `FsWatcher::start` in a separate thread because it blocks the thread to listen to file system events.
