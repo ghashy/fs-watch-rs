@@ -65,6 +65,10 @@ jobs:
  
           mkdir libs
           mv "${LIB_OUTPUT}" "./libs/${BIN_RELEASE}"
+          
+      - name: Create Tag
+        run: git tag v0.1.0
+        
       - name: Publish release
         uses: softprops/action-gh-release@v1
         with:
