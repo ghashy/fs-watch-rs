@@ -74,8 +74,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ./libs/${LIB_RELEASE}
-            ./libs/${LIB_RELEASE_VERSIONED}
+            ./libs/*
           tag_name: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
