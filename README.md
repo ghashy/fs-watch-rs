@@ -46,7 +46,7 @@ func stop():
 ```gdscript
 {
     "attrs": {}
-    "paths": ["/Users /home/bin/directory/file.ext"],
+    "paths": ["/Users/home/bin/directory/file.ext"],
     "type": {
         "modify": {
             "kind": "metadata",
